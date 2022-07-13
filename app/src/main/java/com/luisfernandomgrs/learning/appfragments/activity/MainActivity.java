@@ -20,14 +20,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //defined title to application
         this.setTitle("Using Fragments Components");
+        //removing the shadow under action bar
+        getSupportActionBar().setElevation(0);
 
         // basic codes...
         buttonTalk = findViewById(R.id.buttonTalk);
         buttonContact = findViewById(R.id.buttonContact);
 
-        // Config object to Transaction
+        // settings to use Fragments
         talkFragment = new ConversasFragment();
+        contactFragment = new ContatosFragment();
+
+        // Config object to Transaction
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameContent, talkFragment);
         transaction.commit();
@@ -44,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         buttonContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contactFragment = new ContatosFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frameContent, contactFragment);
                 transaction.commit();
